@@ -1,0 +1,13 @@
+{
+  "name": "yaml",
+  "version": "1.0",
+  "url": "git@github.com:silentorb/archmage-yaml.git",
+  "scripts": {
+    "install": [
+      {
+        "tool": "cmake",
+        "file": "install"
+      }
+    ]
+  }
+}
