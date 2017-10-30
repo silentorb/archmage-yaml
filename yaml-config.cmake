@@ -1,16 +1,14 @@
 
-#if (MINGW)
-#  set(gtest_library libgtest.a)
-#  set(gtest_main libgtest_main.a)
-#elseif (MSVC)
-#  set(gtest_library gtest.lib)
-#  set(gtest_main gtest_main.lib)
-#else ()
-#  message(FATAL_ERROR "Platform support not yet implemented.")
-#endif ()
-#
-#set(lib_dir "${CMAKE_CURRENT_LIST_DIR}/bin/${GENERATOR_KEY}/lib")
-#include_directories(${CMAKE_CURRENT_LIST_DIR}/bin/${GENERATOR_KEY}/include)
+set(lib_dir "${CMAKE_CURRENT_LIST_DIR}/bin/${GENERATOR_KEY}/lib")
+
+if (MINGW)
+  target_link_libraries(${CURRENT_TARGET} "${lib_dir}/libyaml-cpp.a")
+elseif (MSVC)
+  target_link_libraries(${CURRENT_TARGET} "${lib_dir}/libyaml-cppmdd.lib")
+else ()
+  message(FATAL_ERROR "Platform support not yet implemented.")
+endif ()
+include_directories(${CMAKE_CURRENT_LIST_DIR}/bin/${GENERATOR_KEY}/include)
 #target_link_libraries(${CURRENT_TARGET} "${lib_dir}/${gtest_library}")
 #target_link_libraries(${CURRENT_TARGET} "${lib_dir}/${gtest_main}")
 #
